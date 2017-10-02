@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a4cc39cbbde0445fbc72c532c0163b4c" Name="Diagram1">
+        <EntityTypeShape EntityType="JEENModel.Clientes" Width="1.5" PointX="6" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JEENModel.Compras" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JEENModel.Facturas_Prestamos" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="JEENModel.Proveedores" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JEENModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JEENModel.Tipos_Usuario" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JEENModel.Usuarios" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <AssociationConnector Association="JEENModel.FK_Facturas_Prestamos_Clientes" ManuallyRouted="false" />
+        <AssociationConnector Association="JEENModel.FK_Compras_Proveedores" ManuallyRouted="false" />
+        <AssociationConnector Association="JEENModel.FK_Compras_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="JEENModel.FK_Facturas_Prestamos_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="JEENModel.FK_Usuarios_Tipos_Usuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

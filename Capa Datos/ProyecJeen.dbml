@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="JEEN" Class="ProyecJeenDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-5MIO3GF\DAVIDPC;Initial Catalog=JEEN;Integrated Security=True" SettingsObjectName="Capa_Datos.My.MySettings" SettingsPropertyName="JEENConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Clientes" Member="Clientes">
+    <Type Name="Clientes">
+      <Column Name="ID_Cliente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Cliente" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Clientes_Facturas_Prestamos" Member="Facturas_Prestamos" ThisKey="ID_Cliente" OtherKey="ID_Cliente" Type="Facturas_Prestamos" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Compras" Member="Compras">
+    <Type Name="Compras">
+      <Column Name="ID_Compras" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_Proveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="NumFactura" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Producto" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Precio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SubTotal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Descuento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Total" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Proveedores_Compras" Member="Proveedores" ThisKey="ID_Proveedor" OtherKey="ID_Proveedor" Type="Proveedores" IsForeignKey="true" />
+      <Association Name="Usuarios_Compras" Member="Usuarios" ThisKey="ID_Usuario" OtherKey="ID_Usuario" Type="Usuarios" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Facturas_Prestamos" Member="Facturas_Prestamos">
+    <Type Name="Facturas_Prestamos">
+      <Column Name="ID_Prestamos" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_Cliente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cedula" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha_Prestamo" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Monto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Plazo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Taza" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Clientes_Facturas_Prestamos" Member="Clientes" ThisKey="ID_Cliente" OtherKey="ID_Cliente" Type="Clientes" IsForeignKey="true" />
+      <Association Name="Usuarios_Facturas_Prestamos" Member="Usuarios" ThisKey="ID_Usuario" OtherKey="ID_Usuario" Type="Usuarios" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Proveedores" Member="Proveedores">
+    <Type Name="Proveedores">
+      <Column Name="ID_Proveedor" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="NChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Correo" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CedulaJuridica" Type="System.String" DbType="NChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Direccion" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Proveedores_Compras" Member="Compras" ThisKey="ID_Proveedor" OtherKey="ID_Proveedor" Type="Compras" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tipos_Usuario" Member="Tipos_Usuario">
+    <Type Name="Tipos_Usuario">
+      <Column Name="ID_TipoUsu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NChar(15) NOT NULL" CanBeNull="false" />
+      <Association Name="Tipos_Usuario_Usuarios" Member="Usuarios" ThisKey="ID_TipoUsu" OtherKey="ID_Tipo" Type="Usuarios" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Usuarios" Member="Usuarios">
+    <Type Name="Usuarios">
+      <Column Name="ID_Usuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Contrasenna" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Usu" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Tipo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Usuarios_Compras" Member="Compras" ThisKey="ID_Usuario" OtherKey="ID_Usuario" Type="Compras" />
+      <Association Name="Usuarios_Facturas_Prestamos" Member="Facturas_Prestamos" ThisKey="ID_Usuario" OtherKey="ID_Usuario" Type="Facturas_Prestamos" />
+      <Association Name="Tipos_Usuario_Usuarios" Member="Tipos_Usuario" ThisKey="ID_Tipo" OtherKey="ID_TipoUsu" Type="Tipos_Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
